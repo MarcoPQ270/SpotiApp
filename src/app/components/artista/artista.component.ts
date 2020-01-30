@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './artista.component.html',
   styles: []
 })
-export class ArtistaComponent implements OnInit {
+export class ArtistaComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
