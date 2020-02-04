@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-
-
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-tarjetas',
@@ -11,19 +10,18 @@ export class TarjetasComponent {
 
 @Input() items: any [] = [];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  verArtista(item: any){
+  verArtista(item: any) {
 
     let artistaid;
 
-    if (item.type === 'artist'){
+    if (item.type === 'artist') {
           artistaid = item.id;
-    }else{
+    } else {
       artistaid = item.artists[0].id;
     }
-
-    console.log(artistaid);
+    this.router.navigate(['/artista', artistaid]);
   }
 
 }

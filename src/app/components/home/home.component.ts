@@ -11,13 +11,21 @@ export class HomeComponent {
 
 nuevascanciones: any [] = [];
 loading: boolean;
+MensajeError: string;
+
+error: boolean;
   constructor(private spotify: SpotifyService) {
 
     this.loading = true;
+    this.error = false;
     this.spotify.getNewReleases().subscribe((data: any) => {
          console.log(data);
          this.nuevascanciones = data;
          this.loading = false;
+    }, (errorService) => {
+      this.loading = false;
+      this.error = true;
+      this.MensajeError = errorService.error.error.message ;
     });
   }
 
